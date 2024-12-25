@@ -72,7 +72,7 @@ impl Information {
         Ok(3 as f32 * x + 1 as f32 * y)
     }
 
-    fn parse(input: &str) -> IResult<&str, Information> {
+   fn parse(input: &str) -> IResult<&str, Information> {
         let (input, a) = Button::parse('A', input).unwrap();
 
         let (input, _) = char('\n')(input)?;

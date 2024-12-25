@@ -1,6 +1,15 @@
 const std = @import("std");
 
-pub fn main() !void {}
+pub fn main() !void {
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    const allocator = gpa.allocator();
+    defer {
+        _ = gpa.deinit();
+    }
+    const input = @embedFile("input.txt");
+
+    _ = try part_1(allocator, input);
+}
 
 pub fn part_1(allocator: std.mem.Allocator, input: []const u8) !u128 {
     var rows = std.mem.splitAny(u8, input, "\n");
